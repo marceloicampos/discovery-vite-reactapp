@@ -2,8 +2,8 @@ function Home() {
     return (
         <>
             <h1>Lista de Presença</h1>
-            <div></div>
-            <p></p>
+            <input type="text" placeholder="Digite seu Nome" />
+            <button type="button">Adicionar</button>
         </>
     )
 }
