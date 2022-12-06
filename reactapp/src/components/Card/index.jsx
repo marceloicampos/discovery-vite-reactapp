@@ -1,11 +1,21 @@
 import './styles.css'
 
-export function Card() {
+export function Card({ name, time, age }) {
     return (
         <div className="card">
-            <strong>Marcelo Campos</strong>
-            <p>&gt;</p>
-            <small>Entrada: 10:15:23</small>
+            <strong>{name}</strong>
+            <small>{time}</small>
+            <p>{age}</p>
         </div>
     )
 }
+// acima estamos desestruturando o card com os atributos que vamos usar
+// export function Card(props) {
+//     return (
+//         <div className="card">
+//             <strong>{props.name}</strong>
+//             <small>{props.time}</small>
+//             <p>{props.age}</p>
+//         </div>
+//     )
+// }
