@@ -10,9 +10,8 @@
 
 .container input {
     background: #e6e6e6;
-    border-radius: 6px;
+    border-radius: 24px;
     border: none;
-    font-size: 16px;
     font-weight: 400;
     padding: 24px;
     width: 50%;
@@ -21,11 +20,10 @@
 .container button {
     cursor: pointer;
     color: #fff;
-    background: #3B00FA;
-    border-radius: 6px;
+    background: #3b00fa;
+    border-radius: 24px;
     border: none;
-    font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     margin: 12px 0 84px;
     padding: 24px;
     width: 50%;
