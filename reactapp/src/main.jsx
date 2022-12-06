@@ -9,3 +9,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Home />
     </React.StrictMode>
 )
+// <React.StrictMode> >>> para usar React o StrictMode, onde, por exemplo, todas a variáveis devem ser declaradas
