@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 // o useState o padrão para criar um estado no react e retorna um array com 2 posições
 import './styles.css'
+import reactLogo from '../../assets/react.svg'
 import { Card } from '../../components/Card'
 
 export function Home() {
@@ -42,6 +43,14 @@ export function Home() {
     }
     return (
         <div className="container">
+            <div>
+                <a href="https://vitejs.dev" target="_blank">
+                    <img src="/vite.svg" className="logo" alt="Vite logo" />
+                </a>
+                <a href="https://reactjs.org" target="_blank">
+                    <img src={reactLogo} className="logo react" alt="React logo" />
+                </a>
+            </div>
             <h1>Lista de Presença</h1>
             <h2>
                 Nome: {studentName} | Matricula: {studentMat}
