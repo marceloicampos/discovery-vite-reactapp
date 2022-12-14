@@ -2,16 +2,22 @@
 
 discovery-vite-reactapp
 
+> use this to a zero initial boilerplate >>> npm create vite@latest reactapp --template react
+
+[Vite Guide]: https://vitejs.dev/guide/
+
 início 29/11/2022
 
-first
+> use my project:
 
-npm create vite@latest reactapp --template react
+1. first
 
-after
+go to your main projects directoty and clone with git clone
 
-npm install
+2. after
 
-npm run dev
+`cd reactapp`
 
-https://vitejs.dev/guide/
+`npm install`
+
+`npm run dev`
