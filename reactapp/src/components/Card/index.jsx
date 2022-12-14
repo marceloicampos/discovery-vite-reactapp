@@ -1,8 +1,9 @@
 import './styles.css'
 
-export function Card({ name, time, mat }) {
+export function Card({ id, name, time, mat }) {
     return (
         <div className="card">
+            <small>{id}</small>
             <strong>{name}</strong>
             <small>{time}</small>
             <p>{mat}</p>
@@ -15,7 +16,7 @@ export function Card({ name, time, mat }) {
 //         <div className="card">
 //             <strong>{props.name}</strong>
 //             <small>{props.time}</small>
-//             <p>{props.age}</p>
+//             <p>{props.mat}</p>
 //         </div>
 //     )
 // }

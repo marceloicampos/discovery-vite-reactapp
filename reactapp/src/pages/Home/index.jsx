@@ -8,6 +8,7 @@ export function Home() {
     const [studentName, setStudentName] = useState('')
     const [studentMat, setStudentMat] = useState('')
     const [studentKey, setStudentKey] = useState(0)
+    const [studentId, setStudentId] = useState(1)
     // o primeiro é onde GUARDAMOS o valor do estado e o segundo é a FUNÇÃO que atualiza o estado [state, setState]
     // lembrando que o useState pode iniciar vazio ''
     const [students, setStudents] = useState([])
@@ -16,6 +17,7 @@ export function Home() {
         e.preventDefault() // prevent page refresh, but just when use tag form
         const newStudent = {
             key: studentKey,
+            id: studentId,
             name: studentName,
             time: new Date().toLocaleTimeString('pt-BR', {
                 hour: '2-digit',
@@ -30,6 +32,7 @@ export function Home() {
             setStudents(prevState => [...prevState, newStudent])
             setStudentKey(studentKey => studentKey + 1)
             console.log(newStudent.key)
+            setStudentId(studentId => studentId + 1)
             // acima temos um array de estudantes e adicionamos um novo estudante
             // estamos quebrando a regra da imutabilidade do array
             // o ...prevState (pode ser qualquer nome) é o spread operator
@@ -76,7 +79,7 @@ export function Home() {
                 Adicionar
             </button>
             {students.map(e => (
-                <Card key={e.key} name={e.name} time={e.time} mat={e.mat} />
+                <Card key={e.key} id={e.id} name={e.name} time={e.time} mat={e.mat} />
             ))}
         </div>
     )
