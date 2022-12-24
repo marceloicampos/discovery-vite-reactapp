@@ -5,10 +5,10 @@ import reactLogo from '../../assets/react.svg'
 import { Card } from '../../components/Card'
 
 export function Home() {
-    const [studentName, setStudentName] = useState('')
-    const [studentMat, setStudentMat] = useState('')
     const [studentKey, setStudentKey] = useState(0)
     const [studentId, setStudentId] = useState(1)
+    const [studentName, setStudentName] = useState('')
+    const [studentMat, setStudentMat] = useState('')
     // o primeiro é onde GUARDAMOS o valor do estado e o segundo é a FUNÇÃO que atualiza o estado [state, setState]
     // lembrando que o useState pode iniciar vazio ''
     const [students, setStudents] = useState([])
