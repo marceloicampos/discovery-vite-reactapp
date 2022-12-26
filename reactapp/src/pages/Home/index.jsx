@@ -7,8 +7,8 @@ import { Card } from '../../components/Card'
 export function Home() {
     const [studentKey, setStudentKey] = useState(0)
     const [studentId, setStudentId] = useState(1)
-    const [studentName, setStudentName] = useState('')
-    const [studentMat, setStudentMat] = useState('')
+    const [studentName, setStudentName] = useState('--')
+    const [studentMat, setStudentMat] = useState('--')
     // o primeiro é onde GUARDAMOS o valor do estado e o segundo é a FUNÇÃO que atualiza o estado [state, setState]
     // lembrando que o useState pode iniciar vazio ''
     const [students, setStudents] = useState([])
@@ -37,8 +37,8 @@ export function Home() {
             // estamos quebrando a regra da imutabilidade do array
             // o ...prevState (pode ser qualquer nome) é o spread operator
             // e assim estamos substituindo o estado anterior por um novo estado
-            setStudentName('')
-            setStudentMat('')
+            setStudentName('--')
+            setStudentMat('--')
             document.querySelector('#name').value = ''
             document.querySelector('#mat').value = ''
             document.getElementById('alert').innerHTML = ''
@@ -56,9 +56,8 @@ export function Home() {
             </div>
             <div className="title-container">
                 <h1>Lista de Presença</h1>
-                <h3>
-                    Nome: {studentName} | Matricula: {studentMat}
-                </h3>
+                <h3>Nome: {studentName}</h3>
+                <h3>Matricula: {studentMat}</h3>
             </div>
             <div id="alert"></div>
             <input
@@ -92,6 +91,12 @@ export function Home() {
     // ##################################################################
 
     // <Card name="Celo" time="10:55:25" mat={1443} />
+
+    // ##################################################################
+
+    // o conteúdo do card está envolvido por chaves para que o react entenda que é um objeto
+    // o map serve para percorrer cada item da lista de students e retornar um elemento
+    // conforme seja exibido de acordo com elemento card
 }
 
 // export default Home
