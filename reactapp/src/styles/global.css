@@ -10,7 +10,7 @@ input,
 button {
     background-color: #242424;
     font-family: 'Roboto', sans-serif;
-    font-size: 1em;
+    font-size: 0.90em;
 
     -webkit-font-smoothing: antialiased;
     /* contornos das fontes mais suaves */

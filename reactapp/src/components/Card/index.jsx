@@ -2,11 +2,11 @@ import './styles.css'
 
 export function Card({ id, name, time, mat }) {
     return (
-        <div className="card">
-            <small>{id}</small>
-            <strong>{name}</strong>
-            <small>{time}</small>
-            <p>{mat}</p>
+        <div className=" card">
+            <p className="itemId">{id}</p>
+            <p className="itemName">{name}</p>
+            <p className="itemTime">{time}</p>
+            <p className="itemMat">{mat}</p>
         </div>
     )
 }

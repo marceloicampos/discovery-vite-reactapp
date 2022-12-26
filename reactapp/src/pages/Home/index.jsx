@@ -54,10 +54,12 @@ export function Home() {
                     <img src={reactLogo} className="logo react" alt="React logo" />
                 </a>
             </div>
-            <h1>Lista de Presença</h1>
-            <h2>
-                Nome: {studentName} | Matricula: {studentMat}
-            </h2>
+            <div className="title-container">
+                <h1>Lista de Presença</h1>
+                <h3>
+                    Nome: {studentName} | Matricula: {studentMat}
+                </h3>
+            </div>
             <div id="alert"></div>
             <input
                 id="name"
@@ -70,13 +72,14 @@ export function Home() {
             <input
                 id="mat"
                 type="text"
+                maxLength={4}
                 placeholder="Digite sua Matrícula ..."
                 onChange={e => setStudentMat(e.target.value)}
                 onFocus={e => (e.target.placeholder = '')}
                 onBlur={e => (e.target.placeholder = 'Digite sua Matrícula ...')}
             />
             <button type="button" onClick={handleAddStudent}>
-                Adicionar
+                ADICIONAR PRESENÇA
             </button>
             {students.map(e => (
                 <Card key={e.key} id={e.id} name={e.name} time={e.time} mat={e.mat} />

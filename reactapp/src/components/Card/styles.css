@@ -2,15 +2,56 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    font-size: 1.5em;
-    height: 50px;
+    font-size: 1.25em;
     width: 50%;
     background: #735bf2;
     border-radius: 24px;
     color: #fff;
 
     margin-bottom: 12px;
-    padding: 48px;
+    padding: 24px;
 
     justify-content: space-between;
+}
+
+.itemId {
+    display: flex;
+    justify-content: left;
+    width: 5%;
+}
+
+.itemName {
+    display: flex;
+    justify-content: left;
+    width: 35%;
+}
+
+.itemTime {
+    display: flex;
+    justify-content: center;
+    width: 20%;
+}
+
+.itemMat {
+    display: flex;
+    justify-content: center;
+    width: 15%;
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex-direction: column;
+        height: auto;
+    }
+    .itemId {
+        justify-content: center;
+        padding-bottom: 12px;
+    }
+    .itemName {
+        justify-content: center;
+        padding-bottom: 12px;
+    }
+    .itemTime {
+        padding-bottom: 12px;
+    }
 }
