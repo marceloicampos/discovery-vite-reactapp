@@ -12,6 +12,11 @@ export function Home() {
     // o primeiro é onde GUARDAMOS o valor do estado e o segundo é a FUNÇÃO que atualiza o estado [state, setState]
     // lembrando que o useState pode iniciar vazio ''
     const [students, setStudents] = useState([])
+    const [user, setUser] = useState({
+        name: '',
+        id: '',
+        avatar: ''
+    })
 
     function handleAddStudent(event) {
         event.preventDefault() // prevent page refresh, but just when use tag form
@@ -47,10 +52,21 @@ export function Home() {
 
     useEffect(() => {
         console.log('useEffect foi chamado')
+        const url = 'https://api.github.com/users/marceloicampos'
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                setUser({
+                    name: data.name,
+                    id: data.id,
+                    avatar: data.avatar_url
+                })
+            })
         // dentro do corpo do useEffect ficam as ações a serem executadas
         // o primeiro parâmetro é uma função que será executada automaticamente quando o componente for renderizado
         // o segundo parâmetro é uma função que será executada quando o componente for alterado
-    }, [students])
+    }, [])
     // o segundo parâmetro serve para indicar quais os estados que o useEffect irá monitorar e quais estados que o useEffect depende
     // se o segundo parâmetro for vazio, o useEffect será executado apenas uma vez
     // se o segundo parâmetro for informado, o useEffect será executado a cada alteração de estado informado
@@ -71,7 +87,11 @@ export function Home() {
                     <div className="title-container">
                         <h3>Nome: {studentName}</h3>
                         <h3>Matricula: {studentMat}</h3>
-                        <img src="https://avatars.githubusercontent.com/u/71357926?v=4" alt="logo usuário" />
+                    </div>
+                    <div className="title-container">
+                        <p>Meu Nome: {user.name} &nbsp;</p>
+                        <p>GitHub ID: {user.id}</p>
+                        <img src={user.avatar} alt="logo usuário github" />
                     </div>
                 </header>
             </div>
