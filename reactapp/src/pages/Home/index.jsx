@@ -13,8 +13,8 @@ export function Home() {
     // lembrando que o useState pode iniciar vazio ''
     const [students, setStudents] = useState([])
 
-    function handleAddStudent(e) {
-        e.preventDefault() // prevent page refresh, but just when use tag form
+    function handleAddStudent(event) {
+        event.preventDefault() // prevent page refresh, but just when use tag form
         const newStudent = {
             key: studentKey,
             id: studentId,
@@ -65,39 +65,33 @@ export function Home() {
                 id="name"
                 type="text"
                 placeholder="Digite seu Nome ..."
-                onChange={e => setStudentName(e.target.value)}
-                onFocus={e => (e.target.placeholder = '')}
-                onBlur={e => (e.target.placeholder = 'Digite seu Nome ...')}
+                onChange={inputName => setStudentName(inputName.target.value)}
+                onFocus={inputName => (inputName.target.placeholder = '')}
+                onBlur={inputName => (inputName.target.placeholder = 'Digite seu Nome ...')}
             />
             <input
                 id="mat"
                 type="text"
                 maxLength={4}
                 placeholder="Digite sua Matrícula ..."
-                onChange={e => setStudentMat(e.target.value)}
-                onFocus={e => (e.target.placeholder = '')}
-                onBlur={e => (e.target.placeholder = 'Digite sua Matrícula ...')}
+                onChange={inputMat => setStudentMat(inputMat.target.value)}
+                onFocus={inputMat => (inputMat.target.placeholder = '')}
+                onBlur={inputMat => (inputMat.target.placeholder = 'Digite sua Matrícula ...')}
             />
             <button type="button" onClick={handleAddStudent}>
                 ADICIONAR PRESENÇA
             </button>
-            {students.map(e => (
-                <Card key={e.key} id={e.id} name={e.name} time={e.time} mat={e.mat} />
+            {students.map(student => (
+                <Card key={student.key} id={student.id} name={student.name} time={student.time} mat={student.mat} />
             ))}
         </div>
     )
-    // no input acima pegamos o target.value do element 'e' pelo onChange
-    // então atualizamos o valor do estado pelo do setStudentName e do setStudentMat
+    // no input acima pegamos o target.value do element 'input...' pelo onChange
+    // então atualizamos o valor do estado por setStudentName e por setStudentMat
 
     // ##################################################################
 
     // <Card name="Celo" time="10:55:25" mat={1443} />
-
-    // ##################################################################
-
-    // {students.map((student) => (
-    //     <Card name={student.name} time={student.time} mat={student.mat}/>
-    // ))}
 }
 
 // export default Home
