@@ -54,10 +54,15 @@ export function Home() {
                     <img src={reactLogo} className="logo react" alt="React logo" />
                 </a>
             </div>
-            <div className="title-container">
-                <h1>Lista de Presença</h1>
-                <h3>Nome: {studentName}</h3>
-                <h3>Matricula: {studentMat}</h3>
+            <div>
+                <header className="header-container">
+                    <h1>Lista de Presença</h1>
+                    <div className="title-container">
+                        <h3>Nome: {studentName}</h3>
+                        <h3>Matricula: {studentMat}</h3>
+                        <img src="https://avatars.githubusercontent.com/u/71357926?v=4" alt="logo usuário" />
+                    </div>
+                </header>
             </div>
             <div id="alert"></div>
             <input
