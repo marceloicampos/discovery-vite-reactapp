@@ -49,20 +49,31 @@ export function Home() {
             document.getElementById('alert').innerHTML = ''
         }
     }
-
+    
     useEffect(() => {
         console.log('useEffect foi chamado')
-        const url = 'https://api.github.com/users/marceloicampos'
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                setUser({
-                    name: data.name,
-                    id: data.id,
-                    avatar: data.avatar_url
-                })
+        
+        async function fetchData() {
+            const response = await fetch(`https://api.github.com/users/marceloicampos`)
+            const data = await response.json()
+            setUser({
+                name: data.name,
+                id: data.id,
+                avatar: data.avatar_url
             })
+        }
+        fetchData()
+        // const url = 'https://api.github.com/users/marceloicampos'
+        // fetch(url)
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log(data)
+        //         setUser({
+        //             name: data.name,
+        //             id: data.id,
+        //             avatar: data.avatar_url
+        //         })
+        //     })
         // dentro do corpo do useEffect ficam as ações a serem executadas
         // o primeiro parâmetro é uma função que será executada automaticamente quando o componente for renderizado
         // o segundo parâmetro é uma função que será executada quando o componente for alterado
