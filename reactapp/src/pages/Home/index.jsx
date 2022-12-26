@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 // o useState o padrão para criar um estado no react e retorna um array com 2 posições
 import './styles.css'
 import reactLogo from '../../assets/react.svg'
@@ -31,7 +31,7 @@ export function Home() {
         } else {
             setStudents(prevState => [...prevState, newStudent])
             setStudentKey(studentKey => studentKey + 1)
-            console.log(newStudent.key)
+            console.log(`Chave do React: ${newStudent.key}`)
             setStudentId(studentId => studentId + 1)
             // acima temos um array de estudantes e adicionamos um novo estudante
             // estamos quebrando a regra da imutabilidade do array
@@ -44,6 +44,17 @@ export function Home() {
             document.getElementById('alert').innerHTML = ''
         }
     }
+
+    useEffect(() => {
+        console.log('useEffect foi chamado')
+        // dentro do corpo do useEffect ficam as ações a serem executadas
+        // o primeiro parâmetro é uma função que será executada automaticamente quando o componente for renderizado
+        // o segundo parâmetro é uma função que será executada quando o componente for alterado
+    }, [students])
+    // o segundo parâmetro serve para indicar quais os estados que o useEffect irá monitorar e quais estados que o useEffect depende
+    // se o segundo parâmetro for vazio, o useEffect será executado apenas uma vez
+    // se o segundo parâmetro for informado, o useEffect será executado a cada alteração de estado informado
+
     return (
         <div className="container">
             <div>
@@ -102,6 +113,10 @@ export function Home() {
     // o conteúdo do card está envolvido por chaves para que o react entenda que é um objeto
     // o map serve para percorrer cada item da lista de students e retornar um elemento
     // conforme seja exibido de acordo com elemento card
+
+    // ##################################################################
+
+    // <img src="https://github.com/marceloicampos.png" alt="logo usuário" />
 }
 
 // export default Home
