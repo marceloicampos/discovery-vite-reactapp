@@ -12,7 +12,7 @@ início 29/11/2022
 
 1. first
 
-go to your main projects directoty and clone with git clone
+go to your main projects directory and clone with git clone
 
 2. after
 
