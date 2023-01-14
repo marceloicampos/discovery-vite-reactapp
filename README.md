@@ -21,3 +21,5 @@ go to your main projects directory and clone with git clone
 `npm install`
 
 `npm run dev`
+
+Transform project in a TypeScript Project - 14/01/2023
