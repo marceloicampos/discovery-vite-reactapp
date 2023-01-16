@@ -59,6 +59,7 @@
 
 .container button:disabled,
 .container button[disabled] {
+    cursor: not-allowed;
     background-color: rgb(58, 0, 250, 0.2);
 }
 
