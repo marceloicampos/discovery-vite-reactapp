@@ -57,6 +57,11 @@
     transition: filter 0.2s;
 }
 
+.container button:disabled,
+.container button[disabled] {
+    background-color: rgb(58, 0, 250, 0.2);
+}
+
 .container button:hover {
     filter: brightness(0.9);
 }
@@ -95,10 +100,4 @@
         width: 65%;
         padding: 0 1em;
     }
-}
-
-#alert {
-    color: red;
-    font-size: 0.75em;
-    margin-top: 6px;
 }
