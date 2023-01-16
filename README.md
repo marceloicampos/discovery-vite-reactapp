@@ -22,4 +22,20 @@ go to your main projects directory and clone with git clone
 
 `npm run dev`
 
-Transform project in a TypeScript Project - 14/01/2023
+> Transform project in a TypeScript Project - 14/01/2023
+
+1. Install Typescript
+
+`npm install typescript --save-dev`
+
+2 . Create TSConfig on root project 
+
+[tsconfig Guide]: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
+
+3. Install @types for React
+
+`npm i --save-dev @types/react `
+
+4. Transform files to TSX
+
+5. Create Types for the components
