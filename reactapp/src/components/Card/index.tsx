@@ -1,6 +1,14 @@
 import './styles.css'
 
-export function Card({ id, name, time, mat }) {
+export type CardProps = {
+    key: number
+    id: number
+    name: string
+    time: string
+    mat: string
+}
+
+export function Card({ id, name, time, mat }: CardProps) {
     return (
         <div className=" card">
             <p className="itemId">{id}</p>

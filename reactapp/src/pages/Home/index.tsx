@@ -1,25 +1,33 @@
 import React, { useState, useEffect } from 'react'
 // o useState o padrão para criar um estado no react e retorna um array com 2 posições
 import './styles.css'
-import reactLogo from '../../assets/react.svg'
-import { Card } from '../../components/Card'
+// import reactLogo from '../../assets/react.svg'
+// <img src={reactLogo} className="logo react" alt="React logo" />
+import { Card, CardProps } from '../../components/Card'
+
+type ProfileResponse = {
+    name: string
+    id: number
+    avatar_url: string
+}
+
+type User = {
+    name: string
+    id: number
+    avatar: string
+}
 
 export function Home() {
     const [studentKey, setStudentKey] = useState(0)
     const [studentId, setStudentId] = useState(1)
-    const [studentName, setStudentName] = useState('--')
-    const [studentMat, setStudentMat] = useState('--')
+    const [studentName, setStudentName] = useState('')
+    const [studentMat, setStudentMat] = useState('')
     // o primeiro é onde GUARDAMOS o valor do estado e o segundo é a FUNÇÃO que atualiza o estado [state, setState]
     // lembrando que o useState pode iniciar vazio ''
-    const [students, setStudents] = useState([])
-    const [user, setUser] = useState({
-        name: '',
-        id: '',
-        avatar: ''
-    })
+    const [students, setStudents] = useState<CardProps[]>([])
+    const [user, setUser] = useState<User>({} as User)
 
-    function handleAddStudent(event) {
-        event.preventDefault() // prevent page refresh, but just when use tag form
+    function handleAddStudent() {
         const newStudent = {
             key: studentKey,
             id: studentId,
@@ -31,31 +39,24 @@ export function Home() {
             }),
             mat: studentMat
         }
-        if (studentName == '' || studentMat == '') {
-            document.getElementById('alert').innerHTML = 'Preencher Todos os Campos'
-        } else {
-            setStudents(prevState => [...prevState, newStudent])
-            setStudentKey(studentKey => studentKey + 1)
-            console.log(`Chave do React: ${newStudent.key}`)
-            setStudentId(studentId => studentId + 1)
-            // acima temos um array de estudantes e adicionamos um novo estudante
-            // estamos quebrando a regra da imutabilidade do array
-            // o ...prevState (pode ser qualquer nome) é o spread operator
-            // e assim estamos substituindo o estado anterior por um novo estado
-            setStudentName('--')
-            setStudentMat('--')
-            document.querySelector('#name').value = ''
-            document.querySelector('#mat').value = ''
-            document.getElementById('alert').innerHTML = ''
-        }
+        setStudents(prevState => [...prevState, newStudent])
+        setStudentKey(studentKey => studentKey + 1)
+        console.log(`Chave do React: ${newStudent.key}`)
+        setStudentId(studentId => studentId + 1)
+        // acima temos um array de estudantes e adicionamos um novo estudante
+        // estamos quebrando a regra da imutabilidade do array
+        // o ...prevState (pode ser qualquer nome) é o spread operator
+        // e assim estamos substituindo o estado anterior por um novo estado
+        setStudentName('')
+        setStudentMat('')
     }
-    
+
     useEffect(() => {
         console.log('useEffect foi chamado')
-        
         async function fetchData() {
             const response = await fetch(`https://api.github.com/users/marceloicampos`)
-            const data = await response.json()
+            const data = await response.json() as ProfileResponse
+            console.log(data);
             setUser({
                 name: data.name,
                 id: data.id,
@@ -89,7 +90,7 @@ export function Home() {
                     <img src="/vite.svg" className="logo" alt="Vite logo" />
                 </a>
                 <a href="https://reactjs.org" target="_blank">
-                    <img src={reactLogo} className="logo react" alt="React logo" />
+                    <img src="/react.svg" className="logo react" alt="React logo" />
                 </a>
             </div>
             <div>
@@ -101,12 +102,11 @@ export function Home() {
                     </div>
                     <div className="title-container">
                         <p>Meu Nome: {user.name} &nbsp;</p>
-                        <p>GitHub ID: {user.id}</p>
+                        <p>GitHub Id: {user.id}</p>
                         <img src={user.avatar} alt="logo usuário github" />
                     </div>
                 </header>
             </div>
-            <div id="alert"></div>
             <input
                 id="name"
                 type="text"
@@ -114,6 +114,7 @@ export function Home() {
                 onChange={inputName => setStudentName(inputName.target.value)}
                 onFocus={inputName => (inputName.target.placeholder = '')}
                 onBlur={inputName => (inputName.target.placeholder = 'Digite seu Nome ...')}
+                value={studentName}
             />
             <input
                 id="mat"
@@ -123,8 +124,12 @@ export function Home() {
                 onChange={inputMat => setStudentMat(inputMat.target.value)}
                 onFocus={inputMat => (inputMat.target.placeholder = '')}
                 onBlur={inputMat => (inputMat.target.placeholder = 'Digite sua Matrícula ...')}
+                value={studentMat}
             />
-            <button type="button" onClick={handleAddStudent}>
+            <button type="button"
+                onClick={handleAddStudent}
+                disabled={!studentName || !studentMat}
+            >
                 ADICIONAR PRESENÇA
             </button>
             {students.map(student => (
